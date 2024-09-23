@@ -1,4 +1,7 @@
 # Travel-destination-adviser-based-on-users-input-project
+Name: Luka Hendriks,
+studentnumber: 5876605
+
 In this project the goal is to develop a code that helps the user figure out where to go on vacation based on what type of vacation they want, with whom they are going, how many and what type of group it is, 
 the budget and the length of their stay. When it has done this it will give a list of reasons why that is a good place to vacation. It also tells the user how you could best get there, based on travel time, 
 distance and the carbon footprint it leaves behind. It also compares the different types of transport so the user can make an educated decision on how they want to travel based on what they deem important.
