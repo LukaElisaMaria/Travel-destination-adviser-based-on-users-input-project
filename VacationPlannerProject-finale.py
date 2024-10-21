@@ -328,17 +328,7 @@ def vacation_planner():
            group_type in dest["Group Suitability"] and
            dest["Avg Cost/Person"] <= budget)
     ]
-
-#     for dest in destinations:
-#         if dest["Temperature Preference"] == temp_preference:
-#             if vacation_purpose in dest["Vacation Purpose"]:
-#                 if best_season in dest["Best Season"]:
-#                     if duration in dest["Duration"]:
-#                         if group_type in dest["Group Suitability"]:
-#                             if dest["Avg Cost/Person"] <= budget:
-#                                 print("Avg Cost is True")
-#                                 filtered_destinations.append(dest)
-        
+      
     
     # Display the recommended destination(s)
     if len(filtered_destinations) != 0:
