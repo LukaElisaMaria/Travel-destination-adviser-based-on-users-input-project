@@ -305,7 +305,7 @@ destinations = [
 # Function to determine vacation destination.
 # Original function
 
-def vacation_planner():
+#def vacation_planner():
     print("Let's plan your European vacation from Amsterdam!")
 
     # Users input, questions Temperature preferance, Vacation purpose, which season, the duration of their vacation, 
@@ -339,7 +339,7 @@ def vacation_planner():
     #displays possible destinations and temperature preferance.
     display_destination(filtered_destinations)
 # Call the function
-vacation_planner()
+#vacation_planner()
 
 
 # In[ ]:
