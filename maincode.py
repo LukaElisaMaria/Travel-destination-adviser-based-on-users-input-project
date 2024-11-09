@@ -6,7 +6,6 @@
 
 import pandas as pd
 import random
-import ipywidgets as widgets
 from IPython.display import display
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import LabelEncoder
@@ -306,38 +305,38 @@ destinations = [
 # Original function
 
 #def vacation_planner():
-    print("Let's plan your European vacation from Amsterdam!")
+    #print("Let's plan your European vacation from Amsterdam!")
 
     # Users input, questions Temperature preferance, Vacation purpose, which season, the duration of their vacation, 
     #with whom the user is going and how much budget they have.
-    temp_preference = input("Do you want to go on a vacation to a warm or a cold place? ")
-    if temp_preference not in ["Warm", "Cold"]:
-        print("Invalid input for temperature preference.")
-        return
+    #temp_preference = input("Do you want to go on a vacation to a warm or a cold place? ")
+    #if temp_preference not in ["Warm", "Cold"]:
+    #    print("Invalid input for temperature preference.")
+    #    return
     
-    if temp_preference == "Warm":
-        vacation_purpose = input("What is the purpose of your vacation? (Beach, City trip, Cultural & Historic, Nature, Active): ")
-    else:
-        vacation_purpose = input("What is the purpose of your vacation? (City trip, Cultural & Historic, Nature, Active, Skiing and Snowboarding): ")
+    #if temp_preference == "Warm":
+    #    vacation_purpose = input("What is the purpose of your vacation? (Beach, City trip, Cultural & Historic, Nature, Active): ")
+    #else:
+    #    vacation_purpose = input("What is the purpose of your vacation? (City trip, Cultural & Historic, Nature, Active, Skiing and Snowboarding): ")
 
-    best_season = input("When are you going on vacation? (Summer, Autumn, Winter, Spring): ")
-    duration = input("For how long are you going on vacation? (Weekend, Mid-week, Week, 10 days, 2 weeks, 3 weeks, Month): ")
-    group_type = input("With whom are you going on vacation? (Alone, Best friend, My Partner, Friends, Colleagues, My family, My parents, My siblings): ")
-    budget = int(input("What is your max budget per person? (in USD): "))
+    #best_season = input("When are you going on vacation? (Summer, Autumn, Winter, Spring): ")
+    #duration = input("For how long are you going on vacation? (Weekend, Mid-week, Week, 10 days, 2 weeks, 3 weeks, Month): ")
+    #group_type = input("With whom are you going on vacation? (Alone, Best friend, My Partner, Friends, Colleagues, My family, My parents, My siblings): ")
+    #budget = int(input("What is your max budget per person? (in USD): "))
 
     # Filter destinations based on users input
-    filtered_destinations = [
-        dest for dest in destinations
-        if (dest["Temperature Preference"] == temp_preference and
-           vacation_purpose in dest["Vacation Purpose"] and
-           best_season in dest["Best Season"] and
-           duration in dest["Duration"] and
-           group_type in dest["Group Suitability"] and
-           dest["Avg Cost/Person"] <= budget)
-    ]
+    #filtered_destinations = [
+    #    dest for dest in destinations
+    #    if (dest["Temperature Preference"] == temp_preference and
+    #       vacation_purpose in dest["Vacation Purpose"] and
+    #       best_season in dest["Best Season"] and
+    #       duration in dest["Duration"] and
+    #       group_type in dest["Group Suitability"] and
+    #       dest["Avg Cost/Person"] <= budget)
+    #]
       
     #displays possible destinations and temperature preferance.
-    display_destination(filtered_destinations)
+    #display_destination(filtered_destinations)
 # Call the function
 #vacation_planner()
 
