@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Travel-destination-adviser-package"
+version = "0.1.0"
+description = "A simple package that can help you determine where you can or should go on vacation based on your preferences"
+authors = [ 
+    {name = "Luka E.M. Hendriks", email = "lukaelisa@gmail.com"},
+]
+dependencies = ["random", "pandas", "IPython.display", "Numpy", "tkinter"]
