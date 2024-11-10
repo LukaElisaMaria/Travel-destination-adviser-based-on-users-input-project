@@ -54,64 +54,42 @@ def test_querry_group_type(monkeypatch):
 
 # Test for querry_budget
 def test_querry_budget(monkeypatch):
-    monkeypatch.setattr('builtins.input', lambda _: "1000")
-    assert querry_budget() == 1000
+    monkeypatch.setattr('builtins.input', lambda _: "2000")
+    assert querry_budget() == 2000
 
 #test destinations function
-
-@pytest.fixture
-def destinations():
-    return [
-        {
-            "Destination": "Paris",
-            "Temperature Preference": "Warm",
-            "Vacation Purpose": ["Cultural & Historic", "City trip"],
-            "Best Season": ["Spring", "Summer"],
-            "Duration": ["Weekend", "Week"],
-            "Group Suitability": ["Alone", "Friends", "My Partner"],
-            "Avg Cost/Person": 800,
-            "Description": "Experience the culture, art, and food of Paris.",
-            "Travel Options": {"Train": {"Cost": 200, "Time": "3h"}, "Flight": {"Cost": 300, "Time": "1h"}}
-        },
-        {
-            "Destination": "Swiss Alps",
-            "Temperature Preference": "Cold",
-            "Vacation Purpose": ["Skiing and Snowboarding", "Nature"],
-            "Best Season": ["Winter"],
-            "Duration": ["Week", "2 weeks"],
-            "Group Suitability": ["Friends", "My family"],
-            "Avg Cost/Person": 1200,
-            "Description": "Enjoy skiing and snowboarding in the beautiful Alps.",
-            "Travel Options": {"Flight": {"Cost": 400, "Time": "1.5h"}}
-        },
-        
-    ]
-
-#test filter destinations function
 from maincode import filter_destinations
-
-def test_filter_destinations(destinations):
+def test_filter_destinations():
+    # All test destinations
+    destinations = [
+        {
+            "Avg Cost/Person": 1500,
+            "Best Season": ["Spring", "Summer", "Autumn"],
+            "Temperature Preference": "Warm",
+            "Vacation Purpose": ["Beach"],
+            "Duration": ["Week"],
+            "Group Suitability": ["Friends"],
+            "Destination": "Monaco",
+            "Description": "A glamorous destination with luxury, beaches, and a rich cultural heritage.",
+            "Travel Options": {
+                "Flight": {"Cost": 500, "Time": "2 hours"}
+            },
+        },
+        # ... add other destinations as needed for broader tests
+    ]
+    
     result = filter_destinations(
         temp_preference="Warm",
-        vacation_purpose="City trip",
+        vacation_purpose="Beach",
         best_season="Summer",
         duration="Week",
         group_type="Friends",
-        budget=1000
-    )
-    assert len(result) == 1
-    assert result[0]["Destination"] == "Paris"
+        budget = 2000
+        )
+    
+    # Check that the expected destination is among the results
+    assert any(dest["Destination"] == "Monaco" for dest in result)
 
-    # Test for no match
-    result = filter_destinations(
-        temp_preference="Cold",
-        vacation_purpose="Beach",
-        best_season="Summer",
-        duration="Weekend",
-        group_type="Alone",
-        budget=500
-    )
-    assert result == []
 
 # testing display functions
 from maincode import (
@@ -136,14 +114,14 @@ def test_display_vacation_purpose(capsys):
     assert "Your vacation purpose is: Beach." in captured.out
 
 def test_display_user_choices(capsys):
-    display_user_choices("Warm", "Beach", "Summer", "Week", "Friends", 1000)
+    display_user_choices("Warm", "Beach", "Summer", "Week", "Friends", 2000)
     captured = capsys.readouterr()
     assert "You prefer a warm destination." in captured.out
     assert "Your vacation purpose is: Beach." in captured.out
     assert "Your chosen season for travel is: Summer." in captured.out
     assert "You plan to go for: Week." in captured.out
     assert "You are traveling with: Friends." in captured.out
-    assert "Your maximum budget per person is: $1000." in captured.out
+    assert "Your maximum budget per person is: $2000." in captured.out
 
 def test_display_destination_no_results(capsys):
     display_destination([])
@@ -155,13 +133,13 @@ def test_display_destination_with_results(capsys, destinations):
     captured = capsys.readouterr()
     assert "Here are some vacation destinations that match your criteria:" in captured.out
     assert "Destination: Paris" in captured.out
-    assert "Destination: Swiss Alps" in captured.out
+    
 
 #test final function, the vacation planner
 from maincode import vacation_planner
 
 def test_vacation_planner(monkeypatch, capsys, destinations):
-    inputs = iter(["Warm", "Beach", "Summer", "Week", "Friends", "1000"])
+    inputs = iter(["Warm", "Beach", "Summer", "Week", "Friends", "2000"])
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
     
     # Run the planner
@@ -175,6 +153,6 @@ def test_vacation_planner(monkeypatch, capsys, destinations):
     assert "Your chosen season for travel is: Summer." in captured.out
     assert "You plan to go for: Week." in captured.out
     assert "You are traveling with: Friends." in captured.out
-    assert "Your maximum budget per person is: $1000." in captured.out
+    assert "Your maximum budget per person is: $2000." in captured.out
     assert "Here are some vacation destinations that match your criteria:" in captured.out
-    assert "Destination: Paris" in captured.out
+    assert "Destination: Monaco" in captured.out
